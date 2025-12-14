@@ -99,25 +99,14 @@ body {
 
 
     .section span {
-        height: 85%;
         display: flex;
         align-items: center;
         font-size: clamp(3.5rem, 11vh, 20vh);
         line-height: 1;
         font-weight: 500;
-        transform: translateY(0.05em);
+        transform: translateY(0.05em) scale(1);
+        transition: transform var(--transition);
     }
-
-
-
-
-/* ---------- Arrow ---------- */
-
-.arrow {
-    width: 64px;
-    height: auto;
-    transition: transform var(--transition), filter var(--transition);
-}
 
 /* ---------- Hover Behavior ---------- */
 
@@ -133,7 +122,6 @@ body {
     }
 
     .section:hover span {
-        font-size: clamp(4.5rem, 13vh, 22vh); /* slightly bigger */
-        transition: font-size var(--transition);
+        transform: translateY(0.05em) scale(1.1); /* grows 10% */
     }
 
