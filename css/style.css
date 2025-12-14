@@ -106,9 +106,10 @@ body {
     border-top: clamp(2px, .5vh, 5px) solid var(--black);
     text-decoration: none;
     color: var(--black);
-    transition: flex-grow var(--transition)/*, background var(--transition), color var(--transition)*/;
+    transition: flex-grow var(--transition) /*, background var(--transition), color var(--transition)*/;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
 }
 
 
@@ -349,5 +350,3 @@ body {
     .panel-close:hover {
         transform: scale(1.05);
     }
-
-
