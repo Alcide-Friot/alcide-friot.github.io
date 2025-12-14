@@ -1,207 +1,139 @@
-﻿* {
+﻿@font-face {
+    font-family: 'Aalto';
+    src: url('../fonts/aalto.woff2') format('woff2');
+}
+
+:root {
+    --bg-red: #FF061D;
+    --black: #000;
+    --transition: 0.35s cubic-bezier(.4,0,.2,1);
+}
+
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
-    background: #FF061D;
-    margin: 0;
-    font-family: serif;
-    overflow-x: hidden;
-}
-
-.title {
-    color: #FFD500;
-    text-align: center;
-    font-size: 15vh;
-    font-family: 'Foremost', serif; /* Or a better font */
-    letter-spacing: 3px;
-    max-width: 90vw;
-    margin: auto;
-    padding-top: 5vh;
-}
-
-.collage-wrapper {
-    position: relative;
-    width: min(70vw, 2592px);
-    height: min(60vh, 2894px);
-    margin: auto;
-}
-
-.head-collage {
-    position: relative;
-    width: 100%; /* base design width */
-    height: 100%; /* base design height */
-    transform: scale(calc(var(--height))/2894);
-    transform-origin: top center;
-}
-
-.piece {
-    position: absolute;
-    width: auto;
-    transition: transform 0.2s;
-    cursor: pointer;
-}
-
-.piece-game_design {
-    top: 108px;
-    left: 0px;
-}
-.piece-games {
-    top: 0px;
-    left: 920px;
-}
-.piece-graphic_design {
-    top: 1302px;
-    left: 306px;
-}
-.piece-me {
-    top: 1571px;
-    left: 36px;
-}
-.piece-music {
-    top: 1148px;
-    left: 1588px;
-}
-
-.piece:hover {
-    transform: scale(1.03) rotate(1deg);
-}
-
-.modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-    .modal.hidden {
-        display: none;
-    }
-
-.modal-content {
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    max-width: 500px;
-}
-
-.noise-wrapper {
-    position: relative;
-    min-height: 100vh; /* ensures it’s at least full viewport height */
-    width: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-
-.noise-wrapper::before {
-    content: "";
-    position: absolute; /* covers the wrapper */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    background-image: url('../img/noise.png');
-    background-repeat: repeat;
-    opacity: 0.15;
-    z-index: 1; /* behind content */
-}
-
-.noise-wrapper::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    backdrop-filter: blur(.7px);
-    z-index: 2; /* on top of noise but behind content */
-}
-
-
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
     height: 100vh;
+    background: var(--bg-red);
+    overflow: hidden;
+    font-family: Aalto, Arial, Helvetica, sans-serif;
 }
 
-/* ==== POPUP BASE ==== */
-/* popup is hidden via .hidden */
-.popup {
-    position: fixed;
-    inset: 0;
-    background: transparent;
+.page {
+    height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    transform: translateX(0); /* default state */
+    flex-direction: column;
 }
 
-    /* This class triggers the slide-in */
-    .popup.animate {
-        animation: popupSlideIn .5s ease-out forwards;
+/* ---------- Header (35% height implicitly) ---------- */
+
+.header {
+    position: relative;
+    height: 35vh; /* remaining space */
+    padding: 0 50px; /* horizontal only */
+    display: flex;
+    align-items: flex-start;
+    overflow: hidden;
+}
+
+
+    .header h1 {
+        height: 85%;
+        display: flex;
+        align-items: flex-start;
+        font-size: clamp(18rem, 42vh, 70vh);
+        font-weight: 500;
+        line-height: 1;
+        transform: translateY(-0.03em);
+        pointer-events: none;
+        user-select: none;
     }
 
-/* No opacity — pure slide from the right */
-@keyframes popupSlideIn {
+
+
+.star {
+    position: absolute;
+    top: 32px;
+    right: 70px;
+    width: clamp(10rem, 42vh, 70vh);
+    height: clamp(10rem, 42vh, 70vh);
+    animation: spin 50s linear infinite;
+    pointer-events: none;
+}
+
+
+@keyframes spin {
     from {
-        transform: translateX(100vw); /* start completely off-screen to the right */
+        transform: rotate(0deg);
     }
 
     to {
-        transform: translateX(0);
+        transform: rotate(360deg);
     }
 }
 
-.popup.hidden {
-    display: none;
-}
+/* ---------- Sections (65% of viewport) ---------- */
 
-
-
-/* Outer wrapper stays same */
-.popup-outer {
-    position: relative;
-    width: 100vw;
-    height: 80vh;
-    overflow: hidden;
+.sections {
+    height: 65vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+}
+
+/* ---------- Individual Section ---------- */
+
+.section {
+    display: flex;
     align-items: center;
-    background: #fff; /* your white mockup background */
-    box-shadow: 0 0 40px rgba(0,0,0,0.1); /* optional soft shadow */
+    justify-content: space-between;
+    padding: 0 50px;
+    flex: 1; /* 20% default */
+    border-top: clamp(2px, .5vh, 5px) solid var(--black);
+    text-decoration: none;
+    color: var(--black);
+    transition: flex-grow var(--transition), background var(--transition), color var(--transition);
 }
 
-/* same scroll container scaling */
-.popup-inner {
-    width: 2592px;
-    height: 2894px;
-    transform-origin: top left;
-    overflow-x: auto;
-    overflow-y: hidden;
-    position: relative;
+
+    .section span {
+        height: 85%;
+        display: flex;
+        align-items: center;
+        font-size: clamp(3.5rem, 11vh, 20vh);
+        line-height: 1;
+        font-weight: 500;
+        transform: translateY(0.05em);
+    }
+
+
+
+
+/* ---------- Arrow ---------- */
+
+.arrow {
+    width: 64px;
+    height: auto;
+    transition: transform var(--transition), filter var(--transition);
 }
 
-/* close button stays the same */
-.popup-close {
-    position: absolute;
-    top: 20px;
-    right: 25px;
-    font-size: 50px;
-    cursor: pointer;
-    color: #000;
-    z-index: 10000;
+/* ---------- Hover Behavior ---------- */
+
+.section:hover {
+    flex-grow: 1.25; /* 25% */
+    background: var(--black);
+    color: var(--bg-red);
 }
 
-#main-title {
-    transform-origin: top center;
-    transition: transform 0.25s ease;
-}
+    .section:hover .arrow {
+        transform: translateX(24px);
+        filter: invert(1);
+    }
+
+    .section:hover span {
+        font-size: clamp(4.5rem, 13vh, 22vh); /* slightly bigger */
+        transition: font-size var(--transition);
+    }
+

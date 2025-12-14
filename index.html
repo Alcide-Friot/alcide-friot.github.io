@@ -1,46 +1,49 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title></title>
-    <link href="css/style.css" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alcide Friot – Portfolio</title>
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <div class="noise-wrapper">
-        <h1 class="title" id="main-title">Alcide Friot</h1>
 
+    <div class="page">
 
-        <div class="collage-wrapper">
-            <div class="head-collage">
-                <img src="img/game design.png" data-hover="img/game design.png" class="piece piece-game_design" />
-                <img src="img/me.png" data-hover="img/me.png" class="piece piece-me" />
-                <img src="img/games.png" data-hover="img/games.png" class="piece piece-games" />
-                <img src="img/music.png" data-hover="img/music.png" class="piece piece-music" />
-                <img src="img/graphic design.png" data-hover="img/graphic design.png" class="piece piece-graphic_design" />
-            </div>
-        </div>
+        <header class="header">
+            <h1>ALCIDE FRIOT</h1>
+            <img src="img/star.svg" alt="" class="star" />
+        </header>
 
-        <!-- Modal template -->
-        <div id="modal" class="modal hidden">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <div id="modal-body"></div>
-            </div>
-        </div>
+        <nav class="sections">
+            <a class="section" href="#games">
+                <span>GAMES</span>
+                <img src="assets/arrow.svg" alt="" class="arrow" />
+            </a>
 
-        <!-- POPUP WRAPPER -->
-        <div id="popup" class="popup hidden">
-            <div class="popup-outer">
-                <div class="popup-inner" id="popup-inner">
-                    <!-- JS injects content here -->
-                </div>
-                <span class="popup-close">&times;</span>
-            </div>
-        </div>
+            <a class="section" href="#game-design">
+                <span>GAME DESIGN</span>
+                <img src="assets/arrow.svg" alt="" class="arrow" />
+            </a>
+
+            <a class="section" href="#graphic-design">
+                <span>GRAPHIC DESIGN</span>
+                <img src="assets/arrow.svg" alt="" class="arrow" />
+            </a>
+
+            <a class="section" href="#music">
+                <span>MUSIC</span>
+                <img src="assets/arrow.svg" alt="" class="arrow" />
+            </a>
+
+            <a class="section" href="#me">
+                <span>ME</span>
+                <img src="assets/arrow.svg" alt="" class="arrow" />
+            </a>
+        </nav>
 
     </div>
 
-    <script src="js/script.js"></script>
+    <script src="js/main.js"></script>
 </body>
-
 </html>
