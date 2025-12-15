@@ -55,7 +55,7 @@ body {
     .header h1 {
         height: 85%;
         display: flex;
-        align-items: flex-start;
+        align-items:flex-start;
         font-size: clamp(18rem, 42vh, 70vh);
         font-weight: 500;
         line-height: 1;
@@ -116,7 +116,7 @@ body {
     .section span {
         display: flex;
         align-items: center;
-        font-size: clamp(3.5rem, 11vh, 20vh);
+        font-size: clamp(3.5rem, 13vh, 20vh);
         line-height: 1;
         font-weight: 500;
         transform: translateY(0.05em) scale(1);
